@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'realm-android'
+apply plugin: 'io.objectbox'
+android {
+
+    compileSdkVersion 25
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "reshrink.zcw.com.study"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+}
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url "http://objectbox.net/beta-repo/"
+    }
+}
+//greendao {
+//    schemaVersion 1  //版本
+//    daoPackage 'reshrink.zcw.com.study' // 一般为app包名+生成文件的文件夹名
+//    targetGenDir 'src/main/java' //生成文件路径
+//}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.j256.ormlite:ormlite-core:4.48'
+    compile 'com.j256.ormlite:ormlite-android:4.48'
+    compile 'org.greenrobot:greendao:3.2.0'
+    compile 'org.litepal.android:core:1.5.1'
+    compile 'net.zetetic:android-database-sqlcipher:3.5.2'
+    compile 'com.snappydb:snappydb-lib:0.5.2'
+    compile 'io.objectbox:objectbox-android:1.2.1'
+
+
+}
